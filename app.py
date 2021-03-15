@@ -37,10 +37,20 @@ def delete(sno):
     db.session.commit()
     return redirect('/')
 
-@app.route('/update')
-def update():
-    
-    return 'done'
+@app.route('/update/<int:sno>', methods = ['GET', 'POST'])
+def update(sno):
+    if request.method == 'POST':
+        title = request.form['title']
+        desc = request.form['desc']
+        updateTodo = Todo.query.filter_by(sno=sno).first()
+        updateTodo.title = title
+        updateTodo.desc = desc
+        db.session.add(updateTodo)
+        db.session.commit()
+        return redirect('/')
+
+    updateTodo = Todo.query.filter_by(sno=sno).first()
+    return render_template('update.html',updateTodo = updateTodo)
 
 if __name__ == "__main__":
     app.run(debug=True)
