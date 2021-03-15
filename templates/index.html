@@ -17,7 +17,19 @@
                 <label for="desc"  class="form-label">Todo Description</label>
                 <input type="text" name="desc" class="form-control" id="exampleInputPassword1" />
             </div>
+
             
+            <p>Select Priority</p>
+            <input type="checkbox" class="btn-check btn-lg" id="p1" name="pr" value="🔴">
+            <label class="btn btn-outline-danger my-1 btn-lg" for="p1" > 1 </label>
+            <input type="checkbox" class="btn-check btn-lg" id="p2" name="pr" value="🟡">
+            <label class="btn btn-outline-warning my-1 btn-lg" for="p2">2</label> 
+            <input type="checkbox" class="btn-check btn-lg" id="p3" name="pr" value = "🔵" >
+            <label class="btn btn-outline-info my-1 btn-lg" for="p3">3</label>
+
+            <br>
+            <br>
+            <br>
             <button type="submit" class="btn btn-primary btn-lg btn btn-dark">Submit</button>
         </form>
     </div>
@@ -32,8 +44,10 @@
                 <tr>
                     <th scope="col" style="text-align: center;">#</th>
                     <th scope="col" style="text-align: center;">Title</th>
+                    <th scope="col" style="text-align: center;">Priority</th>
                     <th scope="col" style="text-align: center;">Description</th>
                     <th scope="col" style="text-align: center;">Time</th>
+                    
                     <th scope="col" style="text-align: center;">Actions</th>
                 </tr>
             </thead>
@@ -43,6 +57,7 @@
                 <tr>
                     <th scope="row" style="text-align: center; vertical-align: middle;" >{{loop.index}}</th>
                     <td style="text-align: center; vertical-align: middle;">{{todo.title}}</td>
+                    <td style="text-align: center; vertical-align: middle;">{{todo.p}}</td>
                     <td style="text-align: center; vertical-align: middle;">{{todo.desc}}</td>
                     <td style="text-align: center; vertical-align: middle;">{{todo.date_created}}</td>
                     <td style="text-align: center; vertical-align: middle;"><a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-dark mx-2 my-2">Done</button>

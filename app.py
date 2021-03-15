@@ -14,6 +14,7 @@ class Todo(db.Model):
     title = db.Column(db.String(200),nullable = False)
     desc = db.Column(db.String(500),nullable = False)
     date_created = db.Column(db.DateTime,default = datetime.utcnow)
+    p = db.Column(db.Integer,nullable = False)
 
     #explain what to print hen todo object is printed
     def __repr__(self) -> str:
@@ -24,7 +25,8 @@ def hello_world():
     if request.method == "POST":
         title = request.form['title']
         desc = request.form['desc']
-        todo = Todo(title = title, desc = desc)
+        p = request.form.getlist('pr')[0]
+        todo = Todo(title = title, desc = desc, p=p)
         db.session.add(todo)
         db.session.commit()
     allTodo = Todo.query.all()
